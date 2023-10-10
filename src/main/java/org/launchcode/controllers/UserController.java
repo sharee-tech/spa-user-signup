@@ -9,20 +9,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("add")
+    @GetMapping("")
     public String displayAddUserForm() {
-        return "user/add";
+        return "/user/add";
     }
 
-    @PostMapping
+    @PostMapping("")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
-// add form submission handling code here
-        if (user.getPassword().equals(verify)) {
-            return "user/index";
+//        if (!user.getPassword().equals(verify)) {
+//            return "/user/add";
+//        }
+//        model.addAttribute("user", user);
+//
+//        return "/user/index";
+        if (!user.getPassword().equals(verify)) {
+//            model.addAttribute("username", user.getUsername());
+//            model.addAttribute("email", user.getEmail());
+//            model.addAttribute("error", "Passwords do not match.");
+            return "/user/add";
         }
-        return "user/add";
+//        UserData.add(user);
+//        model.addAttribute("user", user);
+//        model.addAttribute("users", UserData.getAll());
+        return "/user/index";
     }
 }

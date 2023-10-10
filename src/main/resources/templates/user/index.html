@@ -2,10 +2,15 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Welcome</title>
+    <link href="../static/styles.css" th:href="@{/styles.css}" rel="stylesheet" />
+
 </head>
 <body>
-    <h1>Test html header</h1>
-<!--    <h1 th:text="Welcome, bob"></h1>-->
+    <h1>Welcome</h1>
+    <h3 th:text = "'Welcome ' + ${user.username} + '!'"></h3>
+    <a th:href="@{/}">
+        Select your spa services here!
+    </a>
 </body>
 </html>
